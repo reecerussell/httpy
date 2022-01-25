@@ -1,3 +1,8 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/reecerussell/httpy)](https://goreportcard.com/badge/github.com/reecerussell/httpy)
+[![codecov](https://codecov.io/gh/reecerussell/httpy/branch/master/graph/badge.svg)](https://codecov.io/gh/reecerussell/httpy)
+[![Go Docs](https://godoc.org/github.com/reecerussell/httpy?status.svg)](https://godoc.org/github.com/reecerussell/httpy)
+![Actions](https://github.com/reecerussell/httpy/actions/workflows/test.yaml/badge.svg)
+
 # httpy
 
 A lightweight package used to make sending HTTP requests easier, with the fluent API of Requests.
