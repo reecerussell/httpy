@@ -11,6 +11,7 @@ import (
 	"strings"
 )
 
+// Header name definitions.
 const (
 	ContentTypeHeader   = "Content-Type"
 	AuthorizationHeader = "Authorization"
@@ -88,6 +89,10 @@ func (r *Request) SetContentType(value string) *Request {
 	return r.SetHeader(ContentTypeHeader, value)
 }
 
+// WithBearer sets the Authorization header of the request, with the given
+// token in the format of "Bearer ...".
+//
+// If the token already has the "Bearer" prefix, this will be ignored.
 func (r *Request) WithBearer(token string) *Request {
 	if strings.HasPrefix(strings.ToLower(token), "bearer ") {
 		token = token[7:]
@@ -95,6 +100,8 @@ func (r *Request) WithBearer(token string) *Request {
 	return r.SetHeader(AuthorizationHeader, fmt.Sprintf("Bearer %s", token))
 }
 
+// WithBasicAuth sets the Authorization header of the request, with the given
+// username and password. These will be encoded and set with the "Basic" prefix.
 func (r *Request) WithBasicAuth(username, password string) *Request {
 	auth := fmt.Sprintf("%s:%s", username, password)
 	value := base64.StdEncoding.EncodeToString([]byte(auth))
