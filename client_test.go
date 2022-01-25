@@ -13,7 +13,7 @@ import (
 )
 
 func TestClientDo_GivenValidRequest_MakesRequest(t *testing.T) {
-	// Times the request has been recieved.
+	// Times the request has been received.
 	var times int32 = 0
 
 	server := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
