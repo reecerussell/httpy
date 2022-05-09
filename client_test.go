@@ -116,3 +116,14 @@ func TestGetTargetURL_GivenDifferentVariations_HandlesLeadingAndTrailingSlashes(
 	res = getTargetURL(base, url)
 	assert.Equal(t, "http://localhost/api/values", res)
 }
+
+func TestNewClient_GivenClient_CreatesWithGivenClient(t *testing.T) {
+	hc := &http.Client{}
+	c := NewClient(hc)
+	assert.Equal(t, hc, c.(*standardClient).httpClient)
+}
+
+func TestNewClient_NotGivenClient_CreatesNewClient(t *testing.T) {
+	c := NewClient()
+	assert.NotNil(t, c.(*standardClient).httpClient)
+}
