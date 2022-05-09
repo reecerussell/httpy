@@ -32,6 +32,20 @@ type Client interface {
 	Do(ctx context.Context, req *Request) (*Response, error)
 }
 
+// NewClient initialises a new instance of Client, using an optionally
+// providing *http.Client. If a client is not provided, a new one is created.
+func NewClient(c ...*http.Client) Client {
+	client := (*http.Client)(nil)
+	if len(c) > 0 {
+		client = c[0]
+	} else {
+		client = &http.Client{}
+	}
+	return &standardClient{
+		httpClient: client,
+	}
+}
+
 type standardClient struct {
 	baseURL    string
 	httpClient *http.Client
